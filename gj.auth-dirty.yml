@@ -23,7 +23,7 @@ ribbon:
 
 spring:
   rabbitmq:
-    addresses: rabbitmq:5673
+    addresses: rabbitmq:5672
     username: admin
     password: admin
   couchbase:
