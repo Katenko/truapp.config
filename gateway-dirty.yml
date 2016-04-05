@@ -1,0 +1,62 @@
+server:
+  port: 10000
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+#logging:
+#  level:
+#    ROOT: DEBUG
+#    org.springframework.web: DEBUG
+
+eureka:
+  instance:
+    hostname: gateway
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka
+
+spring:
+  rabbitmq:
+    addresses: rabbitmq:5673
+    username: admin
+    password: admin
+
+security:
+  sessions: never
+  oauth2:
+    client:
+      accessTokenUri: http://security:11000/uaa/oauth/token
+      userAuthorizationUri: http://security:11000/uaa/oauth/authorize
+      clientId: truapp
+      clientSecret: texrus00
+      scope: openid
+    resource:
+      loadBalanced: true
+      tokenInfoUri: http://security:11000/uaa/oauth/check_token
+
+#proxy:
+#  auth:
+#    routes:
+#      gj_auth: none
+#      gj_users: none
+#      gj_companies: none
+#
+#zuul:
+#  routes:
+#    gj_auth:
+#      path: /gj.auth/**
+#      serviceId: gj.auth
+#    gj_users:
+#      path: /gj.users/**
+#      serviceId: gj.users
+#    gj_companies:
+#      path: /gj.companies/**
+#      serviceId: gj.companies
